@@ -15,31 +15,26 @@ import { FoodEffects } from './actions/effects';
 import { FoodService } from './services/food.service';
 import { StoreService } from './services/store.service';
 
-import { SearchInputComponent } from './search-input/search-input.component';
+
 import { SearchResultsComponent } from './search-results/search-results.component';
-import { FoodResultComponent } from './food-result/food-result.component';
-import { FoodListComponent } from './food-list/food-list.component';
+
 import { FoodDetailComponent } from './food-detail/food-detail.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', pathMatch:'full', redirectTo: 'myfoods' },
+  {path: '', pathMatch:'full', redirectTo: 'search' },
   { path: 'search', component: SearchResultsComponent },
-  { path: 'search/:id', component: FoodResultComponent},
-  { path: 'myfoods', component: FoodListComponent },
-  { path: 'myfoods/:id', component: FoodDetailComponent},
-  { path: '**', pathMatch: 'full', redirectTo: 'myfoods' }
+  { path: 'search/:id', component: FoodDetailComponent},
+  { path: '**', pathMatch: 'full', redirectTo: 'search' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    FoodListComponent,
     FoodDetailComponent,
-    SearchResultsComponent,
-    FoodResultComponent,
-    SearchInputComponent
+    SearchResultsComponent
+    
   
   ],
   imports: [

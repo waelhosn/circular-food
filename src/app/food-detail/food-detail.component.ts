@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Food } from '../models/food.model';
+import { Menu } from '../models/menu.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
@@ -11,11 +11,11 @@ import * as Actions from "../actions/menu.action";
 @Component({
   selector: 'app-food-detail',
   templateUrl: './food-detail.component.html',
-  styleUrls: ['./food-detail.component.css']
+  styleUrls: ['./food-detail.component.scss']
 })
 export class FoodDetailComponent implements OnInit {
 
-  food: Observable<Food>;
+  item: Observable<Menu>;
   loading:  Observable<Boolean>;
 
   constructor(private route: ActivatedRoute, private router: Router,
@@ -23,7 +23,7 @@ export class FoodDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    this.food = this.store.select(state => state.selectedFood);
+    this.item = this.store.select(state => state.selectedFood);
     this.loading = this.store.select(state => state.loading);
 
     this.route.params
@@ -32,9 +32,6 @@ export class FoodDetailComponent implements OnInit {
         .subscribe();
   }
 
-  removeFromList(food: Food): void {
-    this.store.dispatch(new Actions.RemoveFood(food));
-    this.router.navigate(['myfoods']);
-  }
+  
 
 }

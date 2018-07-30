@@ -22,7 +22,7 @@ export class SearchResultsComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    this.store.dispatch(new Actions.Search());
     
     
   }

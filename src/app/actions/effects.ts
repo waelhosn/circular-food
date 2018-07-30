@@ -32,16 +32,6 @@ searchFood$: Observable<Action> = this.actions$.pipe(
 })
 );
 
-@Effect() 
-fetchFood$: Observable<Action> = this.actions$
- // Listen for the 'FETCH_FOOD' action
-.ofType(FoodActions.FETCH_FOOD)
-.map((action: FoodActions.FetchFood) => action.payload)
-.switchMap(query => {
-    return this.foodService.fetchFood(query)
-    .map(food => new FoodActions.FetchFoodDone(food));
-    // catch(() => of(new FoodActions.FetchFoodFail()))
-});
 
 
 
